@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>The Angular Framwork</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/header_custom.css">
+    <!--    <link rel="stylesheet" href="css/theme/black.css" id="theme">-->
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <p class="header_custom">Angular</p>
+            <blockquote>
+                <ul>
+                    <li> A Javascript Framework designed to create single web applications, written in TypeScript</li>
+                    <li>Angular is a complete rewrite of AngularJS (Angular != AngularJS)</li>
+                    <li>Modular and Mobile Development Friendly</li>
+                    <li>Recommends the use of Microsoft’s TypeScript language</li>
+                    <li>Supports reactive programming using RxJS</li>
+                </ul>
+            </blockquote>
+        </section>
+        <section>
+            <p class="header_custom">Versions</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Released</th>
+                    <th>Active ends</th>
+                    <th>LTS ends</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>^8.0.0</td>
+                    <td>Active</td>
+                    <td>28/05/19</td>
+                    <td>28/11/19</td>
+                    <td>28/11/20</td>
+                </tr>
+                <tr>
+                    <td>^7.0.0</td>
+                    <td>Active</td>
+                    <td>18/10/18</td>
+                    <td>18/04/19</td>
+                    <td>18/10/20</td>
+                </tr>
+                <tr>
+                    <td>^6.0.0</td>
+                    <td>Active</td>
+                    <td>06/05/18</td>
+                    <td>03/11/18</td>
+                    <td>03/11/19</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <p class="header_custom"> Support</p>
+            <ul class="square">
+                <li>
+                    All major releases are supported for 18 months :
+                </li>
+                <ul style="line-height: 2em">
+                    <li> 6 months of active support</li>
+                    <li>12 months of long-term support (LTS)</li>
+                </ul>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom"> TypeScript ?</p>
+            <blockquote>TypeScript is a superset of ECMAScript 6 (ES6) and is backward compatible with ECMAScript 5.
+                Angular also includes the benefits of ES6
+            </blockquote>
+            <ul>
+                <li>Class-based Object Oriented Programming :
+                    <ul style="line-height: 2em">
+                        <li>Collections & Iterators</li>
+                        <li>For/Of loops</li>
+                        <li>Reflection</li>
+                        <li>Dependency injection</li>
+                        <li>...</li>
+                    </ul>
+                <li>Static Typing like java, C#, etc...</li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Building Blocks</p>
+            <ul class="square">
+                <li>Modules</li>
+                <li>Components</li>
+                <li>Templates</li>
+                <li>Metadata</li>
+                <li>Directives</li>
+                <li>Data binding</li>
+                <li>Services</li>
+                <li>Dependency injection</li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Modules</p>
+
+            <blockquote>A module is a cohesive block of code with a related set of capabilities
+                which have a specific application domain or a workflow.
+            </blockquote>
+            <ul class="square">
+                <li>Angular apps are modular</li>
+                <li>Angular app contains at least one Angular module (<span style="color: lightgreen">AppModule</span>)
+                </li>
+                <li>angular module is a class with <span style="color: lightgreen"> @NgModule </span>decorator</li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Modules </p>
+            <pre><code class="hljs" data-trim data-line-numbers="1-12">
+				import { NgModule } from '@angular/core';
+				import { BrowserModule } from '@angular/platform-browser';
+
+				@NgModule({
+				imports:[ BrowserModule ],
+				providers: [ MySuperNiceService1,MyExcellentService2,... ],
+				declarations: [ AppComponent, MyStylishComponent1,...],
+				exports: [MyCustomListComponent, MySharedComponent],
+				bootstrap: [ AppComponent ]
+				})
+
+				export class AppModule { }
+				</code></pre>
+
+        </section>
+        <section>
+            <p class="header_custom">Components</p>
+            <small> A component controls one or more section on the screen called a view.</small><br>
+            <ul class="controls-arrow">
+                <li><span style="color: yellow"><b>selector</b></span>: the component tag Name</li>
+                <li><span style="color: yellow"><b>templateUrl</b></span>: the component template location url</li>
+                <li><span style="color: yellow"><b>styleUrls</b></span>: the component style files location urls</li>
+            </ul>
+            <pre><code class="hljs" data-trim data-line-numbers="1-12">
+				import { Component } from '@angular/core';
+
+				@Component({
+				selector:'app-root',
+				templateUrl:'./app.component.html',
+				styleUrls: ['./app.component.css']
+				})
+
+				export class AppComponent{
+				title = 'app works!';
+				}
+				</code>
+				</pre>
+        </section>
+        <section>
+            <p class="header_custom">Components</p>
+            <ul class="square">
+                <li><span style="color: yellow"><b>selector</b></span>: the component tag Name</li>
+                <li><span style="color: yellow"><b>template</b></span>: the component template code</li>
+                <li><span style="color: yellow"><b>styles</b></span>: the component style code</li>
+            </ul>
+            <pre><code class="hljs" data-trim data-line-numbers="1-12">
+				@Component({
+				selector: 'my-app',
+				template: `
+					<button class='boldClass' (click)="onButtonClick()">
+						Nice Button</button>
+				`,
+				styles: [`
+					.boldClass{
+					font-weight:bold;
+					font-size : 30px;
+					}`]
+				</code>
+				</pre>
+        </section>
+        <section>
+            <p class="header_custom">Templates</p>
+            <blockquote style="text-align: left;padding-bottom: 5px">
+                <ul>
+                    <li>A template is collection of HTML tags</li>
+                    <li>Tells Angular about how to render the component</li>
+                    <li>Template looks like regular HTML and could have other nested components</li>
+                </ul>
+            </blockquote>
+        </section>
+        <section>
+            <p class="header_custom">Templates</p>
+            <small>basic template </small>
+            <pre><code class="hljs" data-trim data-line-numbers="1-4">
+				<span class="ma_class_css">
+					Welcome {{ userName }}, you are now connected
+				</span>
+				</code>
+				</pre>
+            <small> advanced template </small>
+            <pre><code class="hljs" style="font-size: 20px;margin-top: -15px" data-trim data-line-numbers="1-12">
+				<my-super-cool-navbar>
+				</my-super-cool-navbar> <!-- a nested component><-->
+				<div class="container">
+					<my-super-cool-list>
+					</my-super-cool-list><!-- another nested component><-->
+					<my-super-cool-chart [data]="myData">
+						<my-line-chart-calculator>
+						</my-line-chart-calculator>
+					</my-super-cool-chart><!-- yet another nested component><--></div>
+				</code></pre>
+        </section>
+        <section>
+            <p class="header_custom">Directives</p>
+            <p style="font-size: 25px">3 Types </p>
+            <ul class="square">
+                <li> Component</li>
+                <li> Structural</li>
+                <li> Attribute</li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Component directive</p>
+            <blockquote>Component directives are used in main class. They contain the detail of how the component should
+                be
+                processed, instantiated and used at runtime.
+            </blockquote>
+        </section>
+        <section>
+            <p class="header_custom">Structural directives</p>
+            <blockquote>Structural directives start with a <span style="color: yellow">* </span>. These directives are
+                used to
+                manipulate and change the
+                structure of the DOM elements.
+            </blockquote>
+            <ul class="square" style="margin-left: 160px; line-height: 2em">
+                <li><span style="color: lightgreen"> *ngIf</span>: The ngIf allows us to Add/Remove DOM Element.</li>
+                <li><span style="color: lightgreen"> *ngSwitch </span>: The *ngSwitch allows us to Add/Remove DOM
+                    Element.
+                    It is similar to switch
+                    statement of C#/java.
+                </li>
+                <li><span style="color: lightgreen"> *ngFor </span>: The *ngFor directive is used to repeat a portion of
+                    HTML template once per
+                    each item from an iterable list (Collection).
+                </li>
+                <li>...</li>
+            </ul>
+        </section>
+        <section>
+          <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			  <li *ngFor="let movie of movies">{{movie}}</li>
+			    </code></pre>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			<movie-detail *ngIf="selectedMovie"></movie-detail>
+			    </code></pre>
+            <pre><code class="hljs" data-trim data-line-numbers="1-5">
+			<container-element [ngSwitch]="switch_expression">
+				<some-element *ngSwitchCase="match_expression_1">...</some-element>
+				...
+				<some-element *ngSwitchDefault>...</some-element>
+			</container-element>
+		  </code></pre>
+        </section>
+        <section><p class="header_custom">Attribute directives</p>
+            <blockquote>Attribute directives are used to change the look and behavior of the DOM elements.</blockquote>
+            <ul class="square" style="margin-left: 170px;line-height: 2em">
+                <li><span style="color: lightgreen">  ngClass </span>: The ngClass directive is used to add or remove
+                    CSS
+                    classes to an HTML
+                    element.
+                </li>
+                <li><span style="color: lightgreen"> ngStyle </span>: The ngStyle directive facilitates you to modify
+                    the
+                    style of an HTML element
+                    using the expression.
+                </li>
+                <li>...</li>
+            </ul>
+        </section>
+        <section>
+            <small> standard</small>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			<div [ngClass]={'text-success':true}"></div>
+			</code></pre>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			<div [ngStyle]="{'background-color':'green'}"></div>
+			</code></pre>
+            <small> conditional</small>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			<div [ngClass]="{'my-class': step=='step1',
+			 'my-class2':step=='step2' }"></div>
+			</code></pre>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+			<div [ngStyle]="{'background-color':person.country === 'UK'
+			 ? 'green' : 'red' }"></div></code></pre>
+            <pre><code class="hljs" data-trim data-line-numbers="1-2">
+				<div [ngClass]="getClassToApply()"></div>
+				<div [ngStyle]="getStyleToApply()"></div>
+			</code></pre>
+        </section>
+        <section>
+            <p class="header_custom">Data Binding</p>
+            <blockquote> Push data values into the HTML controls
+                Turn user responses into actions and value updates
+            </blockquote>
+        </section>
+        <section>
+                <pre><code class="hljs" data-trim data-line-numbers="1-12">
+				<li> {{movie.name}}</li><!-- Interpolation -->
+				<movie-detail [movie]="selectedMovie">
+				</movie-detail> <!-- Property Binding -->
+				<li (click)="selectMovie(Movie)"></li><!-- Event Binding -->
+				<input [(ngModel)]="movie.name"><!-- Two-way data binding -->
+				</code></pre>
+            <ul class="square" style="line-height: 2em">
+                <li>The <span style="color: lightgreen"> {{movie.name}} interpolation </span>displays the component’s
+                    name
+                    property value within the element.
+                </li>
+                <li>The <span style="color: lightgreen">[movie] property binding</span> passes the value of
+                    selectedMovie
+                    from the parent
+                    MovieListComponent to
+                    the movie property of the child MovieDetailComponent.
+                </li>
+                <li> The <span style="color: lightgreen">(click) event binding </span> calls the component’s selectMovie
+                    method when the user clicks a
+                    movies’s
+                    name.
+                </li>
+                <li>
+                    <span style="color: lightgreen">Two-way data binding  </span> is an important part as it combines
+                    property and event binding in a single notation, using the ngModel directive. Here’s an example
+                    from the MovieDetailComponent template:
+                </li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Services</p>
+            <blockquote>Service is a broad category encompassing any value, function, or feature that your application
+                needs. A service is typically a class with a well-defined purpose. Anything can be a service :
+            </blockquote>
+            <ul class="square">
+                <li> Logging service</li>
+                <li> Authentication Service</li>
+                <li> Access Management Service</li>
+                <li> Application configuration</li>
+                <li>...</li>
+            </ul>
+        </section>
+        <section>
+            <p class="header_custom">Services(2)</p>
+            <pre><code class="hljs" data-trim data-line-numbers="1-12">
+		import { Injectable, HttpClient } from '@angular/core';
+		@Injectable()
+		export class MyCustomService {
+		serverUrl: string = 'my_server_url';
+		constructor(private httpClient: HttpClient) { }
+		getMyData() : Observable<MyDataType> {
+		this.data = this.httpClient.get<MyDataType>(this.serverUrl) ;
+		}...
+		</code></pre>
+        </section>
+        <section>
+            <p class="header_custom">Dependency Injection</p>
+            <blockquote>Dependency injection is a way to supply a new instance of a class with the fully-formed
+                dependencies it
+                requires. Most dependencies are services. Angular uses dependency injection to provide new components
+                with
+                the services they need. Angular can tell which services a component needs by looking at the types of its
+                constructor parameters.
+            </blockquote>
+        </section>
+        <section>
+            <p class="header_custom">Component lifecycle hooks</p>
+            <blockquote>
+                " Directive and component instances have a lifecycle as Angular creates, updates, and destroys them.
+                Developers can tap into key moments in that lifecycle by implementing one or more of the lifecycle hook
+                interfaces in the Angular core library."
+            </blockquote>
+        </section>
+        <section>
+            <p class="header_custom">Component lifecycle hooks(2)</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Hook</th>
+                    <th>Purpos & Timing</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ngOnChanges()</td>
+                    <td><span style="font-size:15px">Respond when Angular (re)sets data-bound input properties. The method receives a SimpleChanges object of current and previous property values.
+
+Called before ngOnInit() and whenever one or more data-bound input properties change.</span></td>
+                </tr>
+                <tr>
+                    <td>ngOnInit()</td>
+                    <td><span style="font-size:15px">Initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties.
+
+Called once, after the first ngOnChanges().</span></td>
+                </tr>
+                <tr>
+                    <td>ngDoCheck()</td>
+                    <td><span style="font-size:15px">Detect and act upon changes that Angular can't or won't detect on its own.
+
+Called during every change detection run, immediately after ngOnChanges() and ngOnInit().</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <p class="header_custom">Component lifecycle hooks(3)</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Hook</th>
+                    <th>Purpose & Timing</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ngAfterContentInit()</td>
+                    <td><span style="font-size:15px">Respond after Angular projects external content into the component's view / the view that a directive is in.
+
+Called once after the first ngDoCheck().</span></td>
+                </tr>
+                <tr>
+                    <td>ngAfterContentChecked()</td>
+                    <td><span style="font-size:15px">Respond after Angular checks the content projected into the directive/component.
+
+Called after the ngAfterContentInit() and every subsequent ngDoCheck().</span></td>
+                </tr>
+                <tr>
+                    <td>ngAfterViewInit()</td>
+                    <td><span style="font-size:15px">Respond after Angular initializes the component's views and child views / the view that a directive is in.
+
+Called once after the first ngAfterContentChecked().</span></td>
+                </tr>
+                <tr>
+                    <td>ngAfterViewChecked()</td>
+                    <td><span style="font-size:15px">Respond after Angular checks the component's views and child views / the view that a directive is in.
+
+Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked().</span></td>
+                </tr>
+                <tr>
+                    <td>ngOnDestroy()</td>
+                    <td><span style="font-size:15px">Cleanup just before Angular destroys the directive/component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
+
+Called just before Angular destroys the directive/component.</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <p class="header_custom">Component lifecycle hooks(4)</p>
+            <pre><code class="hljs" data-trim data-line-numbers="1-8">
+            export class MyClass implements OnInit, OnDestroy,OnChange {
+            constructor(private myService: MyService) { }
+
+            // implement OnInit's `ngOnInit` method
+            ngOnInit() { }
+            // implement OnChange's `ngOnChange` method
+            ngOnChange(changes: SimpleChanges) { t}
+            // implement OnDestroy's `ngOnDestroy` method
+            ngOnDestroy() { }
+				...
+            }
+			</code></pre>
+        </section>
+        <section style="text-align: left;">
+            <h1>THE END</h1>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {src: 'plugin/highlight/highlight.js', async: true},
+            {src: 'plugin/search/search.js', async: true},
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>

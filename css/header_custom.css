@@ -1,0 +1,44 @@
+.header_custom {
+    color: orange;
+    /*font-style: italic;*/
+    text-decoration: underline;
+    font-size: larger;
+}
+
+ul {
+    font-size: 22px;
+}
+
+table, th, tr, td, tbody {
+    font-size: 22px !important;
+}
+
+blockquote {
+    font-size: 20px;
+}
+
+
+ul.square {
+    list-style-type: square;
+}
+
+.square {
+    list-style-type: square;
+}
+
+ol.c {
+    list-style-type: upper-roman;
+}
+
+ol.d {
+    list-style-type: lower-alpha;
+}
+
+ul > li {
+    list-style: square !important;
+}
+
+blockquote {
+    text-align: left;
+    line-height: 2em !important;
+}
